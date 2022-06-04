@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.DixaGitPreviewActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.dixa.dixagitpreview.data.model.Organization" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/black"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_github" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@{model.login}"
+                    android:textAppearance="?whiteTextView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Dixa" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{model != null ? View.VISIBLE : View.GONE}"
+            app:constraint_referenced_ids="tvOrgName,tvDescription,tvLocation,tvBlog,tvMail" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintWidth_percent=".3"
+            app:loadFromUrl="@{model.avatar_url}"
+            app:radius="@{@dimen/icon_size_standard}"
+            tools:layout_height="90dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrgName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@{model.name}"
+            android:textAppearance="?whiteTextView"
+            app:layout_constraintStart_toEndOf="@id/ivAvatar"
+            app:layout_constraintTop_toTopOf="@id/ivAvatar"
+            tools:text="Dixa" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.description}"
+            android:textAppearance="?whiteTextView"
+            app:layout_constraintStart_toStartOf="@id/tvOrgName"
+            app:layout_constraintTop_toBottomOf="@id/tvOrgName"
+            tools:text="👋" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLocation"
+            style="?whiteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_low"
+            android:drawableStart="@drawable/ic_location"
+            android:text="@{model.location}"
+            app:layout_constraintStart_toStartOf="@id/tvOrgName"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            tools:text="Copenhagen" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvBlog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:drawableStart="@drawable/ic_mail"
+            android:text="@{model.blog}"
+            android:textAppearance="?whiteTextView"
+            app:layout_constraintStart_toStartOf="@id/tvOrgName"
+            app:layout_constraintTop_toBottomOf="@id/tvLocation"
+            tools:text="https://dixa.com" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:drawableStart="@drawable/ic_insert_link"
+            android:text="@{model.email}"
+            android:textAppearance="?whiteTextView"
+            app:layout_constraintStart_toStartOf="@id/tvOrgName"
+            app:layout_constraintTop_toBottomOf="@id/tvBlog"
+            tools:text="https://dixa.com" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/bottomLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="ivAvatar,tvMail"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/bottomLimit"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRepoList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/statusColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/cell_repository"
+
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

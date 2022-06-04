@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Padding -->
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium_low">12dp</dimen>
+    <dimen name="padding_very_small">4dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="padding_very_large">42dp</dimen>
+    <dimen name="padding_medium_2x">24dp</dimen>
+    <dimen name="padding_medium_high">20dp</dimen>
+
+
+    <!-- Margin -->
+    <dimen name="margin_extra_large">60dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_medium_low">12dp</dimen>
+    <dimen name="margin_medium_high">20dp</dimen>
+    <dimen name="margin_medium_2x">24dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_very_small">4dp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+
+
+    <!--Material Button-->
+    <dimen name="button_large_max_text_size">20sp</dimen>
+    <dimen name="button_large_min_text_size">17sp</dimen>
+    <dimen name="button_max_text_size">17sp</dimen>
+    <dimen name="button_min_text_size">14sp</dimen>
+    <dimen name="button_small_max_text_size">14sp</dimen>
+    <dimen name="button_small_min_text_size">12sp</dimen>
+    <dimen name="button_corner_radius_small">10dp</dimen>
+    <dimen name="button_height_small">50dp</dimen>
+
+
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="radius_medium">12dp</dimen>
+    <dimen name="icon_size_small">16dp</dimen>
+    <dimen name="icon_size_standard">24dp</dimen>
+    <dimen name="radius_xlarge">32dp</dimen>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="statusColor">#161B21</color>
+    <color name="headerColor">#0D1017</color>
+    <color name="linkBlue">#59A6FF</color>
+    <color name="light_gray">#8B949E</color>
+    <color name="gray">#454a4f</color>
+
+
+</resources>

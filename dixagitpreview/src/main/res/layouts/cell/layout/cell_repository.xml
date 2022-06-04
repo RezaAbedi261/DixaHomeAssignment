@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.dixa.dixagitpreview.data.model.Repository" />
+
+        <variable
+            name="view"
+            type="com.dixa.dixagitpreview.view.cell.RepositoryCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvRepoName"
+            style="?linkTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_2x"
+            android:layout_marginTop="@dimen/margin_medium_2x"
+            android:layout_marginEnd="@dimen/margin_medium_2x"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{v-> view.onClick(model.html_url)}"
+            android:text="@{model.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="provisioner-simple-demo" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDescription"
+            style="?textAppearanceCaption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{model.description}"
+            app:layout_constraintEnd_toEndOf="@id/tvRepoName"
+            app:layout_constraintStart_toStartOf="@id/tvRepoName"
+            app:layout_constraintTop_toBottomOf="@id/tvRepoName"
+            app:stringVisibilityCheck="@{model.description}"
+            tools:text="A minimal implementation of Pulumi project following the Provisioner pattern." />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLanguage"
+            style="?textAppearanceCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center_vertical"
+            android:text="@{model.language}"
+            app:layout_constraintStart_toStartOf="@id/tvRepoName"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            tools:text="Scala" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLastUpdate"
+            style="?textAppearanceCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{@string/updated_x(model.getLastUpdate(context))}"
+            app:layout_constraintStart_toStartOf="@id/tvRepoName"
+            app:layout_constraintTop_toBottomOf="@+id/tvLanguage"
+            tools:text="Updated 11 days ago" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvStar"
+            style="?textAppearanceCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:onClick="@{v-> view.starClick()}"
+            android:text="@{model.stargazers_count.toString()}"
+            app:drawablePadding="@{@dimen/padding_small}"
+            app:layout_constraintEnd_toStartOf="@id/tvLicense"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLastUpdate"
+            app:startDrawable="@{@drawable/ic_star}"
+            tools:text="star: 3" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLicense"
+            style="?textAppearanceCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:onClick="@{v-> view.onLicenseClick()}"
+            android:text="@{model.license.spdx_id}"
+            app:drawablePadding="@{@dimen/padding_small}"
+            app:layout_constraintEnd_toStartOf="@id/tvFork"
+            app:layout_constraintStart_toEndOf="@id/tvStar"
+            app:layout_constraintTop_toTopOf="@id/tvStar"
+            app:startDrawable="@{@drawable/ic_license}"
+            app:stringVisibilityCheck="@{model.license.spdx_id}"
+            tools:text="licence: MIT" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFork"
+            style="?textAppearanceCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_low"
+            android:gravity="center_vertical"
+            android:onClick="@{v-> view.onForkClicked()}"
+            android:text="@{model.forks_count.toString()}"
+            app:drawablePadding="@{@dimen/padding_small}"
+            app:layout_constraintEnd_toStartOf="@id/tvPullRequest"
+            app:layout_constraintStart_toEndOf="@id/tvLicense"
+            app:layout_constraintTop_toTopOf="@id/tvStar"
+            app:startDrawable="@{@drawable/ic_fork}"
+            app:stringVisibilityCheck="@{model.forks_count.toString()}"
+            tools:text="fork: 0" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPullRequest"
+            style="?textAppearanceCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_low"
+            android:gravity="center_vertical"
+            android:onClick="@{v-> view.onPullRequestClick()}"
+            android:text="@string/pulls"
+            app:drawablePadding="@{@dimen/padding_small}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvFork"
+            app:layout_constraintTop_toTopOf="@id/tvStar"
+            app:startDrawable="@{@drawable/ic_git_pull}"
+            app:stringVisibilityCheck="@{model.pulls_url}"
+            tools:text="PR: 2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@color/light_gray"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            app:layout_constraintTop_toBottomOf="@id/tvStar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

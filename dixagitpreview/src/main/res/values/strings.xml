@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">dixaGitPreview</string>
+    <string name="day_time__early_morning">Early morning</string>
+    <string name="day_time__morning">Morning</string>
+    <string name="day_time__noon">Noon</string>
+    <string name="day_time__afternoon">Afternoon</string>
+    <string name="day_time__night">Night</string>
+    <string name="pulls">Pull Requests</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="x_days_ago">%s days ago</string>
+    <string name="updated_x">Updated on %s</string>
+
+</resources>
